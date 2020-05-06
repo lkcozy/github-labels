@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -7,13 +7,13 @@ exports.add = add;
 exports.remove = remove;
 exports.find = find;
 
-var _config = require('./lib/config');
+var _config = require("./lib/config");
 
-var _package = require('./lib/package');
+var _package = require("./lib/package");
 
-var _label = require('./lib/label');
+var _label = require("./lib/label");
 
-var _handlers = require('./lib/handlers');
+var _handlers = require("./lib/handlers");
 
 /**
  * Automates and simplifies the creation of labels for GitHub repositories

@@ -1,5 +1,4 @@
-import request from '../lib/request';
-
+import request from "../lib/request";
 
 /**
  * Sends a request to GitHub to create a label
@@ -14,13 +13,13 @@ import request from '../lib/request';
  * @param {String} color the hexidecimal color of the label
  * @return {Promise}
  */
-export function createLabel({api, token, repo}, name, color) {
+export function createLabel({ api, token, repo }, label) {
   return request({
-    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`},
+    headers: { "User-Agent": "request", Authorization: `token ${token}` },
     url: `${api}/${repo}/labels`,
-    form: JSON.stringify({name, color}),
-    method: 'POST',
-    json: true
+    form: JSON.stringify(label),
+    method: "POST",
+    json: true,
   });
 }
 
@@ -36,12 +35,12 @@ export function createLabel({api, token, repo}, name, color) {
  * @param {String} name the name of the label to delete
  * @return {Promise}
  */
-export function deleteLabel({api, token, repo}, name) {
+export function deleteLabel({ api, token, repo }, name) {
   return request({
-    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`},
+    headers: { "User-Agent": "request", Authorization: `token ${token}` },
     url: `${api}/${repo}/labels/${name}`,
-    method: 'DELETE',
-    json: true
+    method: "DELETE",
+    json: true,
   });
 }
 
@@ -56,12 +55,12 @@ export function deleteLabel({api, token, repo}, name) {
  * @param {String} server.repo the git repo to manipulate
  * @return {Promise}
  */
-export function getLabels({api, token, repo}) {
+export function getLabels({ api, token, repo }) {
   return request({
-    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`},
+    headers: { "User-Agent": "request", Authorization: `token ${token}` },
     url: `${api}/${repo}/labels`,
-    method: 'GET',
-    json: true
+    method: "GET",
+    json: true,
   });
 }
 
@@ -74,8 +73,8 @@ export function getLabels({api, token, repo}) {
  * @param {String} color the hexidecimal color of the label
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
-export function formatLabel({name, color}) {
-  return {name, color: color.replace('#', '')};
+export function formatLabel({ name, color, description }) {
+  return { name, color: color.replace("#", ""), description };
 }
 
 /**
@@ -92,9 +91,7 @@ export function formatLabel({name, color}) {
  */
 export function createLabels(server, labels) {
   return Promise.all(
-    labels
-    .map(formatLabel)
-    .map(({name, color}) => createLabel(server, name, color))
+    labels.map(formatLabel).map((label) => createLabel(server, label))
   );
 }
 
@@ -111,8 +108,6 @@ export function createLabels(server, labels) {
  */
 export function deleteLabels(server, labels) {
   return Promise.all(
-    labels
-    .map(formatLabel)
-    .map(({name, color}) => deleteLabel(server, name))
+    labels.map(formatLabel).map(({ name }) => deleteLabel(server, name))
   );
 }

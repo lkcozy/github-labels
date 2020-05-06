@@ -1,8 +1,11 @@
-import {configure} from './lib/config';
-import {findPackages, readPackages} from './lib/package';
-import {createLabels, deleteLabels} from './lib/label';
-import {createSuccessHandler, deleteSuccessHandler, errorHandler} from './lib/handlers';
-
+import { configure } from "./lib/config";
+import { findPackages, readPackages } from "./lib/package";
+import { createLabels, deleteLabels } from "./lib/label";
+import {
+  createSuccessHandler,
+  deleteSuccessHandler,
+  errorHandler,
+} from "./lib/handlers";
 
 /**
  * Automates and simplifies the creation of labels for GitHub repositories

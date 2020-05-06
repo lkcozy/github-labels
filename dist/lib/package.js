@@ -41,7 +41,7 @@ function findPackages(path) {
  * @return {Promise}
  */
 function readPackages() {
-  var packages = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+  var packages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
   return Promise.all(packages.map(readPackage)).then(function (labels) {
     return labels.reduce(function (prev, curr) {
