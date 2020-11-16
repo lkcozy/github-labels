@@ -1,14 +1,16 @@
 "use strict";
 require("dotenv").config();
-var gitLabel = require("../dist/index.js");
+const gitLabel = require("../dist/index.js");
 
-var config = {
+const config = {
   api: "https://api.github.com",
   repo: process.env.REPO,
   token: process.env.TOKEN,
 };
 
-var labels = [
+console.log(config);
+
+const labels = [
   {
     name: "size/XXL",
     color: "#ee0000",
@@ -57,6 +59,11 @@ var labels = [
     description: "A bug fix",
   },
   {
+    name: "hot fix",
+    color: "#35c918",
+    description: "A bug hot fix",
+  },
+  {
     name: "refactor",
     color: "#18c96a",
     description: "A code change that neither fixes a bug nor adds a feature",
@@ -82,12 +89,53 @@ var labels = [
     description: "New feature",
   },
   {
+    name: "enhancement",
+    color: "#a2eeef",
+    description: "New feature or request",
+  },
+  {
     name: "work in progress",
     color: "#b7f954",
     description: "work in progress",
   },
+  {
+    name: "work in progress",
+    color: "#b7f954",
+    description: "work in progress",
+  },
+  {
+    name: "PoC",
+    color: "#198393",
+    description: "Proof of concept",
+  },
+  {
+    name: "PoC",
+    color: "#198393",
+    description: "Proof of concept",
+  },
+  {
+    name: "map",
+    color: "#2eb29e",
+    description: "map",
+  },
+  {
+    name: "issue",
+    color: "#5064c9",
+    description: "issue",
+  },
+  {
+    name: "user",
+    color: "#083793",
+    description: "user",
+  },
+  {
+    name: "workflow",
+    color: "#553ab7",
+    description: "workflow",
+  },
 ];
 
+console.log(`GitHub Repo Name: ${config.repo}`);
 // remove specified labels from a repo
 gitLabel
   .remove(config, labels)
