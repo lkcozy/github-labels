@@ -6,8 +6,8 @@ Extend the [git-label](https://github.com/jasonbellamy/git-label) to add descrip
 
 ## Examples
 
-```
-nodd examples/index.js
+```zsh
+node examples/index.js
 ```
 
 > Note: edit the `REPO`(GitHub repo name) and `TOKEN`(GitHub token) in the `.env` as needed
